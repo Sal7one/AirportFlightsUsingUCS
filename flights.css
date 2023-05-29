@@ -1,0 +1,159 @@
+
+.heading{
+    text-align: center;
+    font-size: 38px;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 20px;
+  }
+
+  h1 {
+    font-size: 24px;
+    color: #333;
+    margin-top: 0;
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .form-container label {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 8px;
+  }
+
+  .form-container select {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .form-container button {
+    padding: 8px 16px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  .result-container {
+    font-size: 16px;
+    color: #333;
+    margin-top: 20px;
+  }
+
+  .result-container p {
+    margin: 0;
+  }
+
+  .link {
+    stroke: #4800ff;
+    stroke-opacity: 0.6;
+  }
+
+  .node circle {
+    stroke: #4800ff;
+    stroke-width: 1.5px;
+  }
+
+  .node text {
+    font-size: 16px;
+  }
+  table {
+    border-collapse: collapse;
+  }
+
+   /* CSS styles for the graph container */
+   #graph-container {
+    position: relative;
+  }
+
+  /* CSS styles for the loading overlay */
+  .loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .loading-message {
+    color: #fff;
+    font-size: 24px;
+  }
+
+  .dataDiv{
+    display: flex;
+    text-align: center;
+    flex-wrap: nowrap;
+    align-content: flex-start;
+    justify-content: center;
+    align-items: center;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+.inputArea{
+    display: flex;
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: center;
+    align-items: center;
+}
+.airport {
+    margin-left: 15px;
+}
+
+#startBtn{
+    display: inline-block;
+    padding: 10px;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #470fbf;
+    margin-left: 20px;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+  #result{
+    margin-top: 20px;
+    color: #4800ff;
+    display: flex;
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: center;
+    align-items: center;
+  }
