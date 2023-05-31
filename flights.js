@@ -81,47 +81,47 @@ function createGraph(flightsGraph) {
   
   createGraph(flightsGraph);
 
+  let finalCost = 0;
 // Uniform Cost Search algorithm
 function uniformCostSearch(graph, start, goal) {
-const visited = new Set();
-const queue = new PriorityQueue();
-const parent = {};
+  const visited = new Set();
+  const queue = new PriorityQueue();
+  const parent = {};
+  const costs = {}; // keep track of costs to nodes
 
-// Initialize start node
-queue.enqueue({ node: start, cost: 0 });
+  costs[start] = 0; // initialize start node cost to 0
+  queue.enqueue({ node: start, cost: 0 });
 
-while (!queue.isEmpty()) {
-const { node, cost } = queue.dequeue();
+  while (!queue.isEmpty()) {
+      const { node, cost } = queue.dequeue();
 
-if (node === goal) {
-  // Build the path from goal to start
-  const path = [goal];
-  let current = goal;
-  while (current !== start) {
-    const prev = parent[current];
-    path.unshift(prev);
-    current = prev;
+      if (node === goal) {
+          const path = [goal];
+          let current = goal;
+          while (current !== start) {
+              const prev = parent[current];
+              path.unshift(prev);
+              current = prev;
+          }
+          finalCost = costs;
+          return path;
+      }
+
+      if (!visited.has(node)) {
+          visited.add(node);
+          const neighbors = graph[node];
+          for (const neighbor in neighbors) {
+              const newCost = cost + neighbors[neighbor];
+              if (!costs[neighbor] || newCost < costs[neighbor]) {
+                  costs[neighbor] = newCost; // update cost
+                  parent[neighbor] = node;
+                  queue.enqueue({ node: neighbor, cost: newCost });
+              }
+          }
+      }
   }
-  return path;
-}
 
-if (!visited.has(node)) {
-  visited.add(node);
-
-  // Explore neighbors
-  const neighbors = graph[node];
-  for (const neighbor in neighbors) {
-    if (!visited.has(neighbor)) {
-      const newCost = cost + neighbors[neighbor];
-      queue.enqueue({ node: neighbor, cost: newCost });
-      parent[neighbor] = node;
-    }
-  }
-}
-}
-
-// No path found
-return null;
+  return null; // no path found
 }
 
 // Uniform Cost Search algorithm
@@ -226,8 +226,9 @@ async function planItinerary() {
     }
     const shortestPath = uniformCostSearch(flightsGraph, startAirport, goalAirport);
 
+    console.log(finalCost)
     if (shortestPath) {
-        resultDiv.textContent = `Shortest path from ${startAirport} to ${goalAirport}: ${shortestPath.join(' ---> ')}`;
+        resultDiv.textContent = `Shortest path from ${startAirport} to ${goalAirport}: ${shortestPath.join(' ---> ')} | Final Cost: ${finalCost[goalAirport]}`;
     } else {
         resultDiv.textContent = `No path found from ${startAirport} to ${goalAirport}`;
     }
